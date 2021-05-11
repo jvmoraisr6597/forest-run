@@ -1,0 +1,86 @@
+Skip to content
+
+Search…
+All gists
+Back to GitHub
+@jvmoraisr6597
+@rask004
+rask004/.gitignore-python
+Created 4 years ago • Report abuse
+12
+2
+ Code
+ Revisions 1
+ Stars 12
+ Forks 2
+<script src="https://gist.github.com/rask004/4c322384aa6012d6c5a7178071d3c8fb.js"></script>
+GitIgnore for Python Pycharm projects.
+.gitignore-python
+.idea/
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+@jvmoraisr6597
+
+Leave a comment
+Nenhum arquivo selecionado
+Attach files by dragging & dropping, selecting or pasting them.
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
