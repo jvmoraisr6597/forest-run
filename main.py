@@ -27,6 +27,7 @@ class Player(pygame.sprite.Sprite):
 
     def pular(self):
         self.jumpping = True
+        self.updateImage(False)
 
     def updateImage(self, url):
         if url:
@@ -66,11 +67,12 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         if self.jumpping:
             if self.jumpCount >= -10:
-                self.rect.y -= (self.jumpCount * abs(self.jumpCount)) * 1
+                self.rect.y -= (self.jumpCount * abs(self.jumpCount)) * 0.65
                 self.jumpCount -= 1
             else:
                 self.jumpCount = 10
                 self.jumpping = False
+                self.rect.y = 300
 
 
 class Food(pygame.sprite.Sprite):
@@ -130,7 +132,7 @@ def start_the_game():
 
         x -= 10
 
-        if not per.jumpping and not per.agachando:
+        if not per.jumpping:
             pressed = pygame.key.get_pressed()
             if pressed[pygame.K_UP]:
                 per.pular()
@@ -161,6 +163,7 @@ def start_the_game():
             criar = True
         collide = pygame.sprite.spritecollide(per, food_group, False, pygame.sprite.collide_mask)
         if len(collide) > 0:
+            pygame.mixer.Channel(1).play(pygame.mixer.Sound('eating.mp3'))
             if food.type == "fat":
                 per.hit()
                 if per.life <= 0:
@@ -175,6 +178,8 @@ def start_the_game():
             food_group.remove(food)
             criar = True
         per.score += 1
+        pygame.draw.rect(DS, (255,0,0), (30,30,200,10))
+        pygame.draw.rect(DS, (0,255,0), (30,30,per.life * 2,10))
         score1 = font.render('Tempo de vida', True, ((0, 0, 0)))
         score2 = font.render(str(per.score), True, ((0, 0, 0)))
         DS.blit(score1, (430, 15))
@@ -206,5 +211,7 @@ def menu_iniciar(score):
     menu.add.vertical_margin(250)
     menu.mainloop(DS)
 
-
+pygame.mixer.init()
+pygame.mixer.Channel(0).play(pygame.mixer.Sound('trilha.mp3'), -1)
 menu_iniciar(best_score)
+
